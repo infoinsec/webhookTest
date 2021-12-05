@@ -28,13 +28,15 @@ app.listen(8080, () => {
 })
 
 var exec = require('child_process').exec;
+const { timeStamp } = require('console');
 function execute(command, callback){
     exec(command, function(error, stdout, stderr){ callback(stdout); });
 };
 // getLastCommitMessage = new Promise((res) => execute("git log -1 --pretty=%B", output => res(output.trim())))
 // getLastCommitMessage.then(result => console.log(result))
 
-incrementCommit = new Promise((res) => execute(`git add . && git commit -m "${Date.now()}" && git push`), output => res(output))
+timestamp = Date.now()
+incrementCommit = new Promise((res) => execute(`git add . && git commit -m "${timestamp}" && git push`), output => res(output))
 
 // getGitUser = function (callback){
 //     execute("git config --global user.name", function(name){
