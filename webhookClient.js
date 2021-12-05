@@ -36,7 +36,7 @@ function execute(command, callback){
 
 timestamp = Date.now()
 incrementCommit = new Promise((res) => 
-    execute(`git add . && git commit -m "${timestamp}" && git push`, output => res(output)
+    execute(`git add . && git commit -m "${timestamp}" && git push`, output => res(output) 
 ))
 
 // getGitUser = function (callback){
