@@ -9,10 +9,9 @@ app.get("/", function(req, res) {
     console.log(req.body)
     res.send("response")
 })
-app.get("/exit", async function(req, res) {
-    await server.close()
+app.get("/exit", function(req, res) {
     res.end("exiting...")
-    console.log("server closed.")
+    server.close()
     process.exit(1)
 })
 app.get("/update", function(req, res) {
@@ -38,8 +37,7 @@ function execute(command, callback){
 
 timestamp = Date.now()
 incrementCommit = new Promise((res) => 
-    execute(`git add . && git commit -m "${timestamp}" && git push`, output => res(output) 
-))
+    execute(`git add . && git commit -m "${timestamp}" && git push`))
 
 incrementCommit.then(output => console.log(output))
 
