@@ -18,6 +18,7 @@ app.get("/update", function(req, res) {
     process.exit(1)
 })
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.post("/", (request,response) => {
     console.log(request.body);
     response.send("posted")
