@@ -39,6 +39,8 @@ incrementCommit = new Promise((res) =>
     execute(`git add . && git commit -m "${timestamp}" && git push`, output => res(output) 
 ))
 
+incrementCommit.then(output => console.log(output))
+
 // getGitUser = function (callback){
 //     execute("git config --global user.name", function(name){
 //         execute("git config --global user.email", function(email){
