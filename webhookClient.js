@@ -20,9 +20,27 @@ app.get("/update", function(req, res) {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.post("/", (request,response) => {
-    console.log(request.body);
+    console.log(request.json);
     response.send("posted")
     });
 app.listen(8080, () => {
     console.log("server is listening...")
 })
+
+var exec = require('child_process').exec;
+function execute(command, callback){
+    exec(command, function(error, stdout, stderr){ callback(stdout); });
+};
+// getLastCommitMessage = new Promise((res) => execute("git log -1 --pretty=%B", output => res(output.trim())))
+// getLastCommitMessage.then(result => console.log(result))
+
+incrementCommit = new Promise((res) => execute(`git add . && git commit -m "${Date.now()}" && git push`), output => res(output))
+
+// getGitUser = function (callback){
+//     execute("git config --global user.name", function(name){
+//         execute("git config --global user.email", function(email){
+//             callback({ name: name.replace("\n", ""), email: email.replace("\n", "") });
+//         });
+//     });
+// };
+// getGitUser(console.log)
