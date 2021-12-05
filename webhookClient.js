@@ -10,7 +10,7 @@ app.get("/", function(req, res) {
     res.send("response")
 })
 app.get("/exit", async function(req, res) {
-    res.send("exiting...")
+    res.end("exiting...")
     await server.close()
     console.log("server closed.")
     process.exit(1)
