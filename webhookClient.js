@@ -30,6 +30,7 @@ const server = app.listen(8080, () => {
 
 var exec = require('child_process').exec
 function execute(command, callback){
+    if(!callback) callback = () => {}
     exec(command, function(error, stdout, stderr){ callback(stdout); });
 };
 // getLastCommitMessage = new Promise((res) => execute("git log -1 --pretty=%B", output => res(output.trim())))
