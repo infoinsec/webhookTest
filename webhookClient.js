@@ -11,7 +11,8 @@ app.get("/", function(req, res) {
 })
 app.get("/exit", function(req, res) {
     res.send("exiting...")
-    process.exit(1)
+    server.close()
+    // process.exit(1)
 })
 app.get("/update", function(req, res) {
     res.send("updating...")
@@ -23,7 +24,7 @@ app.post("/", (request,response) => {
     console.log(request.json);
     response.send("posted")
     });
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
     console.log("server is listening...")
 })
 
