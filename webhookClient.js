@@ -9,10 +9,11 @@ app.get("/", function(req, res) {
     console.log(req.body)
     res.send("response")
 })
-app.get("/exit", function(req, res) {
+app.get("/exit", async function(req, res) {
     res.send("exiting...")
-    server.close()
-    // process.exit(1)
+    await server.close()
+    console.log("server closed.")
+    process.exit(1)
 })
 app.get("/update", function(req, res) {
     res.send("updating...")
