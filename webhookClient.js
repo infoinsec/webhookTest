@@ -27,7 +27,7 @@ app.listen(8080, () => {
     console.log("server is listening...")
 })
 
-var exec = require('child_process').exec;
+var exec = require('child_process').exec
 function execute(command, callback){
     exec(command, function(error, stdout, stderr){ callback(stdout); });
 };
