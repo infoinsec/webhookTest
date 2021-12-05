@@ -28,7 +28,6 @@ app.listen(8080, () => {
 })
 
 var exec = require('child_process').exec;
-const { timeStamp } = require('console');
 function execute(command, callback){
     exec(command, function(error, stdout, stderr){ callback(stdout); });
 };
